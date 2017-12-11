@@ -2,6 +2,10 @@
 <hr>
 
 <ul>
-  <li *ngFor='let goal of goals'>{{goal.name}}</li>
+	<div *ngFor='let goal of goals'>
+		<li >{{goal.name}}</li>	
+		<app-goal-details [goal]='goal'></app-goal-details>
+	</div>
+  
   <p *ngIf='goals.length > 5'>You have too many goals</p>
 </ul>

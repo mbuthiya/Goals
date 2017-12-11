@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
+import {Goal} from '../goal'
 
 @Component({
   selector: 'app-goal-details',
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GoalDetailsComponent implements OnInit {
 
+  @Input() goal:Goal;
   constructor() { }
 
   ngOnInit() {
