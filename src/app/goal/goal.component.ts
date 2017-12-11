@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output,EventEmitter } from '@angular/core';
 import {Goal} from '../goal'
 
 @Component({
@@ -17,6 +17,12 @@ export class GoalComponent implements OnInit {
 		new Goal(6, 'Plot my world domination plan','Cause I am an evil overlord'),
 
 	]
+
+
+	
+	toogleDetails(index){
+		this.goals[index].showDescription = !this.goals[index].showDescription;
+	}
 
   constructor() { }
 
