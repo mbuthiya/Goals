@@ -1,2 +1,6 @@
-<h1> My Goals </h1>
-<p> My goal for today is {{goal}} </p>
+<h1>My Goals</h1>
+<hr>
+
+<ul>
+  <li *ngFor='let goal of goals'>{{goal}}</li>
+</ul>

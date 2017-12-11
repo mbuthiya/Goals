@@ -5,5 +5,10 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html'
 })
 export class AppComponent {
-  goal = 'Watch Finding Nemo';
+	goals: string[];
+
+  constructor(){
+
+  	this.goals = ["Watch Finding Nemo","Buy Cookies","Get new phone case"];
+  }
 }
