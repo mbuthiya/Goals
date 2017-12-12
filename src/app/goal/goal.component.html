@@ -3,11 +3,11 @@
 
 <ul>
 	<div *ngFor='let goal of goals;let i = index'>
-		<li >{{goal.name}}</li>
+		<li  id="{{i}}" appStrikethrough>{{goal.name}}</li>
 		<button  (click)='toogleDetails(i)'>Toogle Details</button>
 
-		<app-goal-details *ngIf="goal.showDescription" [goal]='goal' (isComplete)= 'completeGoal($event,i)'></app-goal-details>
+		<app-goal-details *ngIf="goal.showDescription" [goal]='goal' (isComplete)= 'deleteGoal($event,i)'></app-goal-details>
 	</div>
-  
+   
   <p *ngIf='goals.length > 5'>You have too many goals</p>
 </ul>
