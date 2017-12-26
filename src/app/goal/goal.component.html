@@ -8,7 +8,7 @@
 
 		<div class="row">
 
-			<h5  id="{{i}}" appStrikethrough>{{goal.name}} due on {{goal.completeDate|date|uppercase}}</h5>
+			<h4 id="{{i}}" appStrikethrough>{{goal.name}} due on {{goal.completeDate|date|uppercase}}</h4>
 			<button class="btn btn-primary" (click)='toogleDetails(i)'>Toogle Details</button>
 
 		</div>
@@ -16,7 +16,7 @@
 		<div class="row" *ngIf="goal.showDescription">
 
 			<app-goal-details  [goal]='goal' (isComplete)= 'deleteGoal($event,i)'></app-goal-details>
-			
+
 		</div>
 		
 	</div>
