@@ -8,10 +8,12 @@ import {Goal} from '../goal';
 })
 export class GoalFormComponent implements OnInit {
 
-	newGoal:Goal
+	newGoal=new Goal(0,"","",new Date());
 
 
-  constructor() { }
+
+	// TODO: Remove this when we're done 
+  get diagnostic() { return JSON.stringify(this.newGoal); }
 
   ngOnInit() {
   }
