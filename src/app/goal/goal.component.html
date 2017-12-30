@@ -1,6 +1,12 @@
 <h1>My Goals</h1>
-<hr>
 
+<div class="container">
+
+	<div class="row">
+		<app-goal-form></app-goal-form>
+	</div>
+	
+</div>
 
 <div class="container">
 
@@ -22,6 +28,5 @@
 	</div>
  
 </div>
-	
-  <p *ngIf='goals.length > 5'>You have too many goals</p>
+<p *ngIf='goals.length > 5'>You have too many goals</p>
 
