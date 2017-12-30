@@ -8,6 +8,9 @@ import {Goal} from '../goal';
 })
 export class GoalFormComponent implements OnInit {
 
+	newGoal:Goal
+
+
   constructor() { }
 
   ngOnInit() {
