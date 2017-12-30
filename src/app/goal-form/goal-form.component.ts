@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Goal} from '../goal';
 
 @Component({
   selector: 'app-goal-form',
