@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Output,EventEmitter } from '@angular/core';
 import {Goal} from '../goal';
 
 @Component({
@@ -9,11 +9,12 @@ import {Goal} from '../goal';
 export class GoalFormComponent implements OnInit {
 
 	newGoal=new Goal(0,"","",new Date());
+	@Output() addGoal=new EventEmitter<Goal>();
 
 
-
-	// TODO: Remove this when we're done 
-  get diagnostic() { return JSON.stringify(this.newGoal); }
+	submitGoal(){
+		this.addGoal.emit(this.newGoal);
+	}
 
   ngOnInit() {
   }

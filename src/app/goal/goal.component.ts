@@ -39,6 +39,16 @@ export class GoalComponent implements OnInit {
 
 		}
 	}
+	addNewGoal(goal){
+		let goalLength = this.goals.length;
+		goal.id=goalLength+1;
+		goal.completeDate = new Date(goal.completeDate)
+		console.log(goal.completeDate)
+		console.log(this.goals[0].completeDate)
+
+		this.goals.push(goal)
+
+	}
 
   constructor() { }
 
