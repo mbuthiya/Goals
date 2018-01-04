@@ -2,11 +2,13 @@ import { Component, OnInit, Output,EventEmitter } from '@angular/core';
 
 import {Goal} from '../goal'
 import {Goals} from '../goals'
+import {GoalService} from '../goals/goal.service';
 import {StrikethroughDirective} from '../strikethrough.directive'
 
 @Component({
   selector: 'app-goal',
   templateUrl: './goal.component.html',
+  providers:[GoalService], //add the providers to the component
   styleUrls: ['./goal.component.css']
 })
 export class GoalComponent implements OnInit {
