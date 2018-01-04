@@ -1,7 +1,6 @@
 import { Component, OnInit, Output,EventEmitter } from '@angular/core';
 
 import {Goal} from '../goal'
-import {Goals} from '../goals'
 import {GoalService} from '../goals/goal.service';
 import {StrikethroughDirective} from '../strikethrough.directive'
 
@@ -13,10 +12,8 @@ import {StrikethroughDirective} from '../strikethrough.directive'
 })
 export class GoalComponent implements OnInit {
 
-	status:string='None';
-	// April 14 2018 January = 0 
+	goals:Goal[];
 
-	goals = Goals;
 
 	toogleDetails(index){
 		this.goals[index].showDescription = !this.goals[index].showDescription;
@@ -44,7 +41,9 @@ export class GoalComponent implements OnInit {
 
 	}
 
-  constructor() { }
+  constructor(goalService:GoalService) {
+  this.goals = goalService.getGoals()
+   }
 
   ngOnInit() {
   }
