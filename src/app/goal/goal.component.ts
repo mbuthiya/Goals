@@ -1,10 +1,14 @@
 import { Component, OnInit, Output,EventEmitter } from '@angular/core';
+import {HttpClient} from '@angular/common/http'
 
 import {Goal} from '../goal'
+import {Quote} from '../quote-class/quote'
+
 import {GoalService} from '../goals/goal.service';
 import {AlertsService} from '../alert-service/alerts.service'
 
 import {StrikethroughDirective} from '../strikethrough.directive'
+
 
 @Component({
   selector: 'app-goal',
@@ -16,6 +20,8 @@ export class GoalComponent implements OnInit {
 
 	goals:Goal[];
 	alertService:AlertsService;
+	quote:Quote;
+
 
 	toogleDetails(index){
 		this.goals[index].showDescription = !this.goals[index].showDescription;
@@ -44,12 +50,18 @@ export class GoalComponent implements OnInit {
 
 	}
 
-  constructor(goalService:GoalService,alertService:AlertsService) {
+  constructor(goalService:GoalService,alertService:AlertsService,private http:HttpClient) {
   this.goals = goalService.getGoals();
   this.alertService = alertService;
    }
 
   ngOnInit() {
+  	this.http.get("http://quotes.rest/qod.json").subscribe(data=>{
+  		var result =data["contents"].quotes[0];
+  		this.quote= new Quote(result.quote,result.author)
+  	
+
+  	})
   }
 
 }
