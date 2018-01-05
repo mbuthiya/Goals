@@ -2,6 +2,8 @@ import { Component, OnInit, Output,EventEmitter } from '@angular/core';
 
 import {Goal} from '../goal'
 import {GoalService} from '../goals/goal.service';
+import {AlertsService} from '../alert-service/alerts.service'
+
 import {StrikethroughDirective} from '../strikethrough.directive'
 
 @Component({
@@ -13,7 +15,7 @@ import {StrikethroughDirective} from '../strikethrough.directive'
 export class GoalComponent implements OnInit {
 
 	goals:Goal[];
-
+	alertService:AlertsService;
 
 	toogleDetails(index){
 		this.goals[index].showDescription = !this.goals[index].showDescription;
@@ -26,6 +28,7 @@ export class GoalComponent implements OnInit {
 
 			if(toDelete){
 				this.goals.splice(index,1)
+				this.alertService.alertMe("Goal has been deleted")
 			}
 
 		}
@@ -41,8 +44,9 @@ export class GoalComponent implements OnInit {
 
 	}
 
-  constructor(goalService:GoalService) {
-  this.goals = goalService.getGoals()
+  constructor(goalService:GoalService,alertService:AlertsService) {
+  this.goals = goalService.getGoals();
+  this.alertService = alertService;
    }
 
   ngOnInit() {
