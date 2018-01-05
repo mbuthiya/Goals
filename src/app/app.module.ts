@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http'
 
 import {AlertsService} from './alert-service/alerts.service'
 
@@ -24,7 +25,8 @@ import { GoalFormComponent } from './goal-form/goal-form.component';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [AlertsService],
   bootstrap: [AppComponent]
