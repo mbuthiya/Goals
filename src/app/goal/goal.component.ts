@@ -55,8 +55,16 @@ export class GoalComponent implements OnInit {
   this.alertService = alertService;
    }
 
+
+
   ngOnInit() {
-  	this.http.get("https://talaikis.com/api/quotes/random/").subscribe(data=>{
+
+  	interface ApiResponse{
+  		quote:string;
+  		author:string
+
+  	}
+  	this.http.get<ApiResponse>("https://talaikis.com/api/quotes/random/").subscribe(data=>{
   		
   		this.quote= new Quote(data.quote,data.author)
   	
@@ -66,5 +74,6 @@ export class GoalComponent implements OnInit {
   		console.log("Error occured ")
   	})
   }
+
 
 }
