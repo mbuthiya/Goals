@@ -1,21 +1,22 @@
 import { Component, OnInit, Output,EventEmitter } from '@angular/core';
-import {HttpClient} from '@angular/common/http'
+
 
 import {Goal} from '../goal'
 import {Quote} from '../quote-class/quote'
 
+
 import {GoalService} from '../goals/goal.service';
 import {AlertsService} from '../alert-service/alerts.service'
+import {QuoteRequestService} from '../quote-http/quote-request.service'
 
 import {StrikethroughDirective} from '../strikethrough.directive'
 
-import {environment} from '../../environments/environment'
 
 
 @Component({
   selector: 'app-goal',
   templateUrl: './goal.component.html',
-  providers:[GoalService], //add the providers to the component
+  providers:[GoalService,QuoteRequestService], //add the providers to the component
   styleUrls: ['./goal.component.css']
 })
 export class GoalComponent implements OnInit {
@@ -23,6 +24,7 @@ export class GoalComponent implements OnInit {
 	goals:Goal[];
 	alertService:AlertsService;
 	quote:Quote;
+	
 
 
 	toogleDetails(index){
@@ -52,7 +54,7 @@ export class GoalComponent implements OnInit {
 
 	}
 
-  constructor(goalService:GoalService,alertService:AlertsService,private http:HttpClient) {
+  constructor(goalService:GoalService,alertService:AlertsService,private quoteService:QuoteRequestService) {
   this.goals = goalService.getGoals();
   this.alertService = alertService;
    }
@@ -60,22 +62,9 @@ export class GoalComponent implements OnInit {
 
 
   ngOnInit() {
-
-  	console.log(environment.apiUrl)
-  	interface ApiResponse{
-  		quote:string;
-  		author:string
-
-  	}
-  	this.http.get<ApiResponse>(environment.apiUrl).subscribe(data=>{
-  		
-  		this.quote= new Quote(data.quote,data.author)
+  	this.quoteService.quoteRequest()
+  	this.quote=this.quoteService.quote
   	
-
-  	},err=>{
-  		this.quote= new Quote("Never, never, never give up.","winston churchill")
-  		console.log("Error occured ")
-  	})
   }
 
 
