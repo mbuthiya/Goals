@@ -56,9 +56,9 @@ export class GoalComponent implements OnInit {
    }
 
   ngOnInit() {
-  	this.http.get("http://quotes.rest/qod.json").subscribe(data=>{
-  		var result =data["contents"].quotes[0];
-  		this.quote= new Quote(result.quote,result.author)
+  	this.http.get("https://talaikis.com/api/quotes/random/").subscribe(data=>{
+  		
+  		this.quote= new Quote(data.quote,data.author)
   	
 
   	},err=>{
