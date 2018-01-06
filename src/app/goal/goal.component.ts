@@ -9,6 +9,8 @@ import {AlertsService} from '../alert-service/alerts.service'
 
 import {StrikethroughDirective} from '../strikethrough.directive'
 
+import {environment} from '../../environments/environment'
+
 
 @Component({
   selector: 'app-goal',
@@ -59,12 +61,13 @@ export class GoalComponent implements OnInit {
 
   ngOnInit() {
 
+  	console.log(environment.apiUrl)
   	interface ApiResponse{
   		quote:string;
   		author:string
 
   	}
-  	this.http.get<ApiResponse>("https://talaikis.com/api/quotes/random/").subscribe(data=>{
+  	this.http.get<ApiResponse>(environment.apiUrl).subscribe(data=>{
   		
   		this.quote= new Quote(data.quote,data.author)
   	
