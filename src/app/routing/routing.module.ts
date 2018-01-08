@@ -15,7 +15,7 @@ const routes:Routes=[
   {path:"about",component:AboutComponent},
   {path:"",redirectTo:"/goals",pathMatch:"full"},
   {path:'**',component:NotFoundComponent},
-  {path:'goal/:id',component:GoalDetailsComponent}
+  {path:'goals/:id',component:GoalDetailsComponent}
 ]
 
 @NgModule({
