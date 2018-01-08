@@ -12,15 +12,20 @@ import {GoalService} from '../goals/goal.service'
 })
 export class GoalDetailsComponent implements OnInit {
 
-  @Input() goal:Goal;
+   goal:Goal;
   @Output() isComplete= new EventEmitter<boolean>();
 
   goalDelete(complete:boolean){
   	this.isComplete.emit(complete);
   }
-  constructor() { }
+  constructor(private route:ActivatedRoute,
+    private router:Router, 
+    private service:GoalService) { }
+ 
 
   ngOnInit() {
+     let id = this.route.snapshot.paramMap.get('id');
+     this.goal=this.service.getGoal(id)
   }
 
 }

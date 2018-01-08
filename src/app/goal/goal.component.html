@@ -26,16 +26,11 @@
 		<div class="row">
 
 			<h4 id="{{i}}" appStrikethrough>{{goal.name}} due on {{goal.completeDate|date|uppercase}}</h4>
-			<button class="btn btn-primary" routerLink='/goals/{{goal.id}}'>View Details</button>
+			<button class="btn btn-primary" (click)=goToUrl(goal.id)>View Details</button>
+			<button class="btn btn-danger" (click) = 'deleteGoal(i)'> Delete Goal </button>
 
 		</div>
-		
-		<div class="row" *ngIf="goal.showDescription">
 
-			<app-goal-details  [goal]='goal' (isComplete)= 'deleteGoal($event,i)'></app-goal-details>
-
-		</div>
-		
 	</div>
  
 </div>

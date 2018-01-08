@@ -3,7 +3,7 @@ import { Component, OnInit, Output,EventEmitter } from '@angular/core';
 
 import {Goal} from '../goal'
 import {Quote} from '../quote-class/quote'
-
+import { Router} from '@angular/router';
 
 import {GoalService} from '../goals/goal.service';
 import {AlertsService} from '../alert-service/alerts.service'
@@ -27,19 +27,21 @@ export class GoalComponent implements OnInit {
 	
 
 
-	toogleDetails(index){
-		this.goals[index].showDescription = !this.goals[index].showDescription;
+	goToUrl(id){
+
+		this.router.navigate(['/goals',id])
+
 	}
 
-	deleteGoal(isComplete,index){
-		if (isComplete){
+	deleteGoal(index){
+		
 
 			let toDelete=confirm(`Are you sure you want to delete ${this.goals[index].name}`)
 
 			if(toDelete){
 				this.goals.splice(index,1)
 				this.alertService.alertMe("Goal has been deleted")
-			}
+			
 
 		}
 	}
@@ -54,7 +56,7 @@ export class GoalComponent implements OnInit {
 
 	}
 
-  constructor(goalService:GoalService,alertService:AlertsService,private quoteService:QuoteRequestService) {
+  constructor(goalService:GoalService,alertService:AlertsService,private quoteService:QuoteRequestService,private router:Router) {
   this.goals = goalService.getGoals();
   this.alertService = alertService;
    }
