@@ -23,7 +23,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
 // Defining routes
 const routes:Routes=[
   {path:"goals",component:GoalComponent},
-  {path:"about",component:AboutComponent}
+  {path:"about",component:AboutComponent},
+  {path:'**',component:NotFoundComponent}
 ]
 
 @NgModule({
