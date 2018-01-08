@@ -2,13 +2,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http'
-import {RouterModule,Routes} from '@angular/router'
+
 
 import { NgProgressModule } from '@ngx-progressbar/core';
 import { NgProgressHttpClientModule } from '@ngx-progressbar/http-client';
 
 
 import {AlertsService} from './alert-service/alerts.service'
+import {RoutingModule} from './routing/routing.module'
 
 
 import { AppComponent } from './app.component';
@@ -20,13 +21,7 @@ import { GoalFormComponent } from './goal-form/goal-form.component';
 import { AboutComponent } from './about/about.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 
-// Defining routes
-const routes:Routes=[
-  {path:"goals",component:GoalComponent},
-  {path:"about",component:AboutComponent},
-  {path:"",redirectTo:"/goals",pathMatch:"full"},
-  {path:'**',component:NotFoundComponent}
-]
+
 
 @NgModule({
   declarations: [
@@ -42,10 +37,11 @@ const routes:Routes=[
   imports: [
     BrowserModule,
     FormsModule,
+    RoutingModule,
     HttpClientModule,
     NgProgressModule.forRoot(),
     NgProgressHttpClientModule,
-    RouterModule.forRoot(routes)
+
   ],
   providers: [AlertsService],
   bootstrap: [AppComponent]
